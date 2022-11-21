@@ -25,7 +25,7 @@ const Header = ({ type }) => {
     },
   ]);
   return (
-    <div className="bg-[#f3f6f9] text-[#5651e5] flex justify-center p-2 relative">
+    <div className="bg-[#dfeecb] text-[#5651e5] flex justify-center p-2 relative">
       <div className="w-full max-w-[1024px] ">
         <div
           className={type === "list" ? "flex gap-5 mb-2" : "flex gap-5 mb-10"}
@@ -79,7 +79,7 @@ const Header = ({ type }) => {
                     onChange={(item) => setDate([item.selection])}
                     moveRangeOnFirstSelection={false}
                     ranges={date}
-                    className="absolute top-[95px] sm:top-[48px] "
+                    className="absolute top-[95px] sm:top-[48px] z-40"
                     minDate={new Date()}
                   />
                 )}
