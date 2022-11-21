@@ -1,6 +1,7 @@
 import React from "react";
 import Featured from "../../Components/Featured";
 import FeaturedProperties from "../../Components/FeaturedProperties";
+import Footer from "../../Components/Footer";
 import Header from "../../Components/Header";
 import Navbar from "../../Components/Navbar";
 import PropertyList from "../../Components/PropertyList";
@@ -21,7 +22,7 @@ const Home = () => {
         </h1>
         <FeaturedProperties />
 
-        {/* <Footer /> */}
+        <Footer />
       </div>
     </div>
   );

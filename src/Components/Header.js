@@ -94,7 +94,7 @@ const Header = ({ type }) => {
                 />
               </div>
               <div>
-                <button className="border-none font-medium	cursor-pointer p-3 rounded-md">
+                <button className="border-none font-medium	cursor-pointer p-2 rounded-none	">
                   Search
                 </button>
               </div>
