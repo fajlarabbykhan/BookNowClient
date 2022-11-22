@@ -14,7 +14,10 @@ import { useState } from "react";
 import "react-date-range/dist/styles.css"; // main css file
 import "react-date-range/dist/theme/default.css"; // theme css file
 import { format } from "date-fns";
+import { useNavigate } from "react-router-dom";
 const Header = ({ type }) => {
+  const [destination, setDestination] = useState("");
+  const [members, setMembers] = useState("");
   const [openDate, setOpenDate] = useState(false);
 
   const [date, setDate] = useState([
@@ -24,6 +27,11 @@ const Header = ({ type }) => {
       key: "selection",
     },
   ]);
+
+  const navigate = useNavigate();
+  const handleSearch = () => {
+    navigate("/hotels", { state: { destination, date, members } });
+  };
   return (
     <div className="bg-[#dfeecb] text-[#5651e5] flex justify-center p-2 relative">
       <div className="w-full max-w-[1024px] ">
@@ -60,6 +68,7 @@ const Header = ({ type }) => {
                   type="text"
                   placeholder="Please enter location"
                   className="outline-none cursor-pointer"
+                  onChange={(e) => setDestination(e.target.value)}
                 />
               </div>
               <div className="flex items-center gap-2 py-2">
@@ -91,10 +100,14 @@ const Header = ({ type }) => {
                   placeholder="Members"
                   className="outline-none cursor-pointer"
                   min="1"
+                  onChange={(e) => setMembers(e.target.value)}
                 />
               </div>
               <div>
-                <button className="border-none font-medium	cursor-pointer p-2 rounded-none	">
+                <button
+                  className="border-none font-medium	cursor-pointer p-2 rounded-none	shadow-gray-400 uppercase bg-gradient-to-r from-[#5651e5] to-[#709dff] text-white"
+                  onClick={handleSearch}
+                >
                   Search
                 </button>
               </div>
