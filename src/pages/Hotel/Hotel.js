@@ -83,7 +83,7 @@ const Hotel = () => {
         )}
         <div className="w-full max-w-[1024px] flex flex-col gap-2 relative mb-7">
           <button className="absolute top-2 right-0 border-none px-5 py-2 bg-[ #0071c2] text-white font-bold rounded cursor-pointer bg-gradient-to-r from-[#5651e5] to-[#709dff]">
-            Reserve or Book Now!
+            Book Now!
           </button>
           <h1 className=" text-2xl text-[#5651e5]">Tower Street Apartments</h1>
           <div className=" text-xs flex items-center gap-2">
@@ -150,7 +150,7 @@ const Hotel = () => {
                 <b>$945</b> (9 nights)
               </h2>
               <button className="border-none px-5 py-2 bg-[ #0071c2] text-white font-bold rounded cursor-pointer bg-gradient-to-r from-[#5651e5] to-[#709dff]">
-                Reserve or Book Now!
+                Book Now!
               </button>
             </div>
           </div>
