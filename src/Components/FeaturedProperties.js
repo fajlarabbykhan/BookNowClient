@@ -13,7 +13,9 @@ const FeaturedProperties = () => {
         <span className="font-light">Madrid</span>
         <span className="font-medium	">Starting from $120</span>
         <div>
-          <button className="border-none p-3 mr-2 font-bold">8.9</button>
+          <button className="border-none p-3 mr-2 font-bold shadow-gray-400 rounded-xl uppercase bg-gradient-to-r from-[#5651e5] to-[#709dff] text-white">
+            8.9
+          </button>
           <span className="text-sm	">Excellent</span>
         </div>
       </div>
@@ -27,7 +29,9 @@ const FeaturedProperties = () => {
         <span className="font-light">Austin</span>
         <span className="font-medium	">Starting from $140</span>
         <div>
-          <button className="border-none p-3 mr-2 font-bold">9.3</button>
+          <button className="border-none p-3 mr-2 font-bold shadow-gray-400 rounded-xl uppercase bg-gradient-to-r from-[#5651e5] to-[#709dff] text-white">
+            9.3
+          </button>
           <span className="text-sm	">Exceptional</span>
         </div>
       </div>
@@ -41,7 +45,9 @@ const FeaturedProperties = () => {
         <span className="font-light">Lisbon</span>
         <span className="font-medium	">Starting from $99</span>
         <div>
-          <button className="border-none p-3 mr-2 font-bold">8.8</button>
+          <button className="border-none p-3 mr-2 font-bold shadow-gray-400 rounded-xl uppercase bg-gradient-to-r from-[#5651e5] to-[#709dff] text-white">
+            8.8
+          </button>
           <span className="text-sm	">Excellent</span>
         </div>
       </div>
@@ -55,7 +61,9 @@ const FeaturedProperties = () => {
         <span className="font-light">Berlin</span>
         <span className="font-medium	">Starting from $105</span>
         <div>
-          <button className="border-none p-3 mr-2 font-bold">8.9</button>
+          <button className="border-none p-3 mr-2 font-bold shadow-gray-400 rounded-xl uppercase bg-gradient-to-r from-[#5651e5] to-[#709dff] text-white">
+            8.9
+          </button>
           <span className="text-sm	">Excellent</span>
         </div>
       </div>

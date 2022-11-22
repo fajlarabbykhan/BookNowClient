@@ -105,7 +105,7 @@ const Header = ({ type }) => {
               </div>
               <div>
                 <button
-                  className="border-none font-medium	cursor-pointer p-2 rounded-none	shadow-gray-400 uppercase bg-gradient-to-r from-[#5651e5] to-[#709dff] text-white"
+                  className="border-none font-medium	cursor-pointer p-2 rounded-none	shadow-gray-400  bg-gradient-to-r from-[#5651e5] to-[#709dff] text-white"
                   onClick={handleSearch}
                 >
                   Search
