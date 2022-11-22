@@ -55,16 +55,17 @@ const Hotel = () => {
       <Navbar />
       <Header type="list" />
       <div className="flex flex-col items-center mt-5 p-1">
+        {/* bg-base-300 */}
         {open && (
-          <div className=" sticky top-0 left-0 w-[100vw] h-[100vh] bg-base-300 z-[999] flex items-center">
+          <div className=" sticky top-0 left-0 w-[100vw] h-[100vh]  bg-[#000000] bg-opacity-50  z-[999] flex items-center">
             <FontAwesomeIcon
               icon={faCircleXmark}
-              className=" absolute top-5 right-5 text-[#5651e5]  cursor-pointer"
+              className=" absolute top-5 right-5 text-[#dbdaeb]  cursor-pointer m-5 text-5xl"
               onClick={() => setOpen(false)}
             />
             <FontAwesomeIcon
               icon={faCircleArrowLeft}
-              className=" m-5 text-5xl text-gray-400 cursor-pointer"
+              className=" m-5 text-5xl text-[#dbdaeb]  cursor-pointer"
               onClick={() => handleMove("l")}
             />
             <div className="w-full h-full flex justify-center items-center">
@@ -76,7 +77,7 @@ const Hotel = () => {
             </div>
             <FontAwesomeIcon
               icon={faCircleArrowRight}
-              className="m-5 text-5xl text-gray-400 cursor-pointer"
+              className="m-5 text-5xl text-[#dbdaeb] cursor-pointer"
               onClick={() => handleMove("r")}
             />
           </div>
