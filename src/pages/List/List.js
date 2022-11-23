@@ -81,13 +81,21 @@ const List = () => {
                   <span className="text-xs text-white">
                     Min Price <small>per night</small>
                   </span>
-                  <input type="number" className="h-7 border-none p-2" />
+                  <input
+                    type="number"
+                    className="h-7 border-none p-2"
+                    onChange={(e) => setMin(e.target.value)}
+                  />
                 </div>
                 <div className="flex justify-between  mb-2 ">
                   <span className="text-xs text-white">
                     Max Price <small>per night</small>
                   </span>
-                  <input type="number" className="h-7 border-none p-2" />
+                  <input
+                    type="number"
+                    className="h-7 border-none p-2"
+                    onChange={(e) => setMax(e.target.value)}
+                  />
                 </div>
                 <div className="flex justify-between mb-2 ">
                   <span className="text-xs text-white">Room</span>
@@ -99,7 +107,10 @@ const List = () => {
                 </div>
               </div>
             </div>
-            <button className="p-2 shadow-gray-400  text-xl bg-gradient-to-r from-[#dee94c] to-[#d41876] text-white w-full">
+            <button
+              className="p-2 shadow-gray-400  text-xl bg-gradient-to-r from-[#dee94c] to-[#d41876] text-white w-full"
+              onClick={handleClick}
+            >
               Search
             </button>
           </div>
