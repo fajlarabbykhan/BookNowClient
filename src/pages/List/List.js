@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import { DateRange } from "react-date-range";
 import { useLocation } from "react-router-dom";
 import Header from "../../Components/Header";
+import useFetch from "../../Components/hooks/useFetch";
 import Navbar from "../../Components/Navbar";
 import SearchItem from "../../Components/SearchItem";
 const List = () => {
@@ -12,13 +13,26 @@ const List = () => {
   const [members, setMembers] = useState(location.state.members);
   const [date, setDate] = useState(location.state.date);
   const [openDate, setOpenDate] = useState(false);
+
+  const [min, setMin] = useState(undefined);
+  const [max, setMax] = useState(undefined);
+
+  const { data, loading, error, reFetch } = useFetch(
+    `http://localhost:4000/server/hotels?city=${destination}&min=${
+      min || 0
+    }&max=${max || 999}`
+  );
+
+  const handleClick = () => {
+    reFetch();
+  };
   return (
     <div>
       <Navbar />
       <Header type="list" />
       <div className="flex justify-center mt-5">
         <div className="w-full max-w-[1024px] grid grid-cols-1 md:grid-cols-3 gap-4">
-          <div className=" bg-gradient-to-r from-[#5651e5] to-[#709dff] ml-2 w-full h-[380px] p-3 rounded-lg	md:sticky top-2 relative">
+          <div className=" bg-gradient-to-r from-[#5651e5] to-[#709dff] ml-2 w-full h-[415px] p-3 rounded-lg	md:sticky top-2 relative">
             <p className="text-xl	text-white font-bold mb-2">Search</p>
             <div className="flex flex-col gap-1 mb-2">
               <label className="text-xs text-white">Destination</label>
@@ -69,6 +83,12 @@ const List = () => {
                   </span>
                   <input type="number" className="h-7 border-none p-2" />
                 </div>
+                <div className="flex justify-between  mb-2 ">
+                  <span className="text-xs text-white">
+                    Max Price <small>per night</small>
+                  </span>
+                  <input type="number" className="h-7 border-none p-2" />
+                </div>
                 <div className="flex justify-between mb-2 ">
                   <span className="text-xs text-white">Room</span>
                   <input
@@ -84,34 +104,15 @@ const List = () => {
             </button>
           </div>
           <div className="col-span-2  p-3">
-            <SearchItem />
-            <SearchItem />
-            <SearchItem />
-            <SearchItem />
-            <SearchItem />
-            <SearchItem />
-            <SearchItem />
-            <SearchItem />
-            <SearchItem />
-            <SearchItem />
-            <SearchItem />
-            <SearchItem />
-            <SearchItem />
-            <SearchItem />
-            <SearchItem />
-            <SearchItem />
-            <SearchItem />
-            <SearchItem />
-            <SearchItem />
-            <SearchItem />
-            <SearchItem />
-            <SearchItem />
-            <SearchItem />
-            <SearchItem />
-            <SearchItem />
-            <SearchItem />
-            <SearchItem />
-            <SearchItem />
+            {loading ? (
+              "Loading"
+            ) : (
+              <>
+                {data.map((item) => (
+                  <SearchItem key={item._id} item={item} />
+                ))}
+              </>
+            )}
           </div>
         </div>
       </div>
