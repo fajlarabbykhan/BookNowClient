@@ -11,7 +11,7 @@ const List = () => {
   // console.log(location);
   const [destination, setDestination] = useState(location.state.destination);
   const [members, setMembers] = useState(location.state.members);
-  const [date, setDate] = useState(location.state.date);
+  const [dates, setDates] = useState(location.state.dates);
   const [openDate, setOpenDate] = useState(false);
 
   const [min, setMin] = useState(undefined);
@@ -48,8 +48,8 @@ const List = () => {
                 className="h-7 border-none p-2 bg-white flex items-center cursor-pointer"
                 onClick={() => setOpenDate(!openDate)}
               >
-                {`${format(date[0].startDate, "MM/dd/yyyy")} to ${format(
-                  date[0].endDate,
+                {`${format(dates[0].startDate, "MM/dd/yyyy")} to ${format(
+                  dates[0].endDate,
                   "MM/dd/yyyy"
                 )}`}
               </spna>
@@ -57,9 +57,9 @@ const List = () => {
               {openDate && (
                 <DateRange
                   editableDateInputs={true}
-                  onChange={(item) => setDate([item.selection])}
+                  onChange={(item) => setDates([item.selection])}
                   moveRangeOnFirstSelection={false}
-                  ranges={date}
+                  ranges={dates}
                   className="absolute top-[152px] z-40"
                   minDate={new Date()}
                 />

@@ -9,11 +9,11 @@ import { SearchContextProvider } from "./context/SearchContext";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <SearchContextProvider>
-      <BrowserRouter>
+    <BrowserRouter>
+      <SearchContextProvider>
         <App />
-      </BrowserRouter>
-    </SearchContextProvider>
+      </SearchContextProvider>
+    </BrowserRouter>
   </React.StrictMode>
 );
 

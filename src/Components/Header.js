@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import {
   faBed,
   faCalendarDays,
@@ -15,23 +15,27 @@ import "react-date-range/dist/styles.css"; // main css file
 import "react-date-range/dist/theme/default.css"; // theme css file
 import { format } from "date-fns";
 import { useNavigate } from "react-router-dom";
+import { SearchContext } from "../context/SearchContext";
 const Header = ({ type }) => {
   const [destination, setDestination] = useState("");
   const [members, setMembers] = useState("");
   const [openDate, setOpenDate] = useState(false);
 
-  const [date, setDate] = useState([
+  const [dates, setDates] = useState([
     {
       startDate: new Date(),
       endDate: new Date(),
       key: "selection",
     },
   ]);
-
   const navigate = useNavigate();
+  const { dispatch } = useContext(SearchContext);
+
   const handleSearch = () => {
-    navigate("/hotels", { state: { destination, date, members } });
+    dispatch({ type: "NEW_SEARCH", payload: { destination, dates, members } });
+    navigate("/hotels", { state: { destination, dates, members } });
   };
+
   return (
     <div className="bg-[#dfeecb] text-[#5651e5] flex justify-center p-2 relative">
       <div className="w-full max-w-[1024px] ">
@@ -77,17 +81,17 @@ const Header = ({ type }) => {
                   className="text-gray-400 cursor-pointer	"
                   onClick={() => setOpenDate(!openDate)}
                 >
-                  {`${format(date[0].startDate, "MM/dd/yyyy")} to ${format(
-                    date[0].endDate,
+                  {`${format(dates[0].startDate, "MM/dd/yyyy")} to ${format(
+                    dates[0].endDate,
                     "MM/dd/yyyy"
                   )}`}
                 </span>
                 {openDate && (
                   <DateRange
                     editableDateInputs={true}
-                    onChange={(item) => setDate([item.selection])}
+                    onChange={(item) => setDates([item.selection])}
                     moveRangeOnFirstSelection={false}
-                    ranges={date}
+                    ranges={dates}
                     className="absolute top-[95px] sm:top-[48px] z-40"
                     minDate={new Date()}
                   />

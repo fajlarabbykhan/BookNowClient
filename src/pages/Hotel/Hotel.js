@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import {
   faCircleArrowLeft,
   faCircleArrowRight,
@@ -12,6 +12,7 @@ import Footer from "../../Components/Footer";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useLocation } from "react-router-dom";
 import useFetch from "../../Components/hooks/useFetch";
+import { SearchContext } from "../../context/SearchContext";
 
 const Hotel = () => {
   const [slideNumber, setSlideNumber] = useState(0);
@@ -58,6 +59,19 @@ const Hotel = () => {
   const { data, loading, error } = useFetch(
     `http://localhost:4000/server/hotels/find/${id}`
   );
+
+  const { dates, members } = useContext(SearchContext);
+  // console.log(dates);
+  const MILLISECONDS_PER_DAY = 1000 * 60 * 60 * 24;
+  function dayDifference(date1, date2) {
+    const timeDiff = Math.abs(date2.getTime() - date1.getTime());
+    const diffDays = Math.ceil(timeDiff / MILLISECONDS_PER_DAY);
+    return diffDays;
+  }
+
+  const days = dayDifference(dates[0].endDate, dates[0].startDate);
+  // console.log(days);
+
   return (
     <div>
       <Navbar />
@@ -131,14 +145,14 @@ const Hotel = () => {
               </div>
               <div className="flex-1 bg-[#eff1f5] p-5 flex flex-col gap-5  shadow-2xl ">
                 <h1 className=" text-lg text-[#0071c2]">
-                  Perfect for a 9-night stay!
+                  Perfect for a {days}-night stay!
                 </h1>
                 <span className=" text-sm">
                   Located in the real heart of Krakow, this property has an
                   excellent location score of 9.8!
                 </span>
                 <h2 className=" font-light">
-                  <b>$945</b> (9 nights)
+                  <b>${days * data.cheapestPrice * members}</b> ({days} nights)
                 </h2>
                 <button className="border-none px-5 py-2 bg-[ #0071c2] text-white font-bold rounded cursor-pointer bg-gradient-to-r from-[#5651e5] to-[#709dff]">
                   Book Now!
